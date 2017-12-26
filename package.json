@@ -21,6 +21,7 @@
         "npm-run-all": "^4.1.2"
     },
     "dependencies": {
+        "@keyv/mongo": "^1.0.4",
         "discord.js": "^11.2.1",
         "dotenv": "^4.0.0",
         "got": "^8.0.1",
