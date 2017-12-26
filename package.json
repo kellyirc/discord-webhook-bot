@@ -3,13 +3,13 @@
 	"description": "Discord webhook bot",
 	"author": "Raymond Hammarling",
 	"license": "MIT",
-    "main": "lib/index.js",
+	"main": "lib/index.js",
 	"scripts": {
 		"lint": "eslint lib/ test/",
 		"test": "ava",
 		"watch": "ava -w",
 		"prepublish": "run-s lint test",
-        "start": "node ."
+		"start": "node ."
 	},
 	"devDependencies": {
 		"ava": "^0.24.0",
@@ -21,6 +21,9 @@
 		"discord.js": "^11.2.1",
 		"dotenv": "^4.0.0",
 		"got": "^8.0.1",
-		"keyv": "^3.0.0"
+		"keyv": "^3.0.0",
+		"lodash": "^4.17.4",
+		"minimist": "^1.2.0",
+		"string-argv": "0.0.2"
 	}
 }
