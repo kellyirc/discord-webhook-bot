@@ -1,33 +1,37 @@
 {
-    "name": "",
-    "description": "Discord webhook bot",
-    "author": "Raymond Hammarling",
-    "license": "MIT",
-    "main": "lib/index.js",
-    "scripts": {
-        "lint": "eslint lib/ test/",
-        "test": "ava",
-        "watch": "ava -w",
-        "prepublish": "run-s lint test",
-        "start": "node ."
-    },
-    "engines": {
-        "node": ">=8.9.1 <9.0.0"
-    },
-    "devDependencies": {
-        "ava": "^0.24.0",
-        "eslint": "^4.14.0",
-        "eslint-config-kellyirc": "^3.1.0",
-        "npm-run-all": "^4.1.2"
-    },
-    "dependencies": {
-        "@keyv/mongo": "^1.0.4",
-        "discord.js": "^11.2.1",
-        "dotenv": "^4.0.0",
-        "got": "^8.0.1",
-        "keyv": "^3.0.0",
-        "lodash": "^4.17.4",
-        "minimist": "^1.2.0",
-        "string-argv": "0.0.2"
-    }
+  "name": "discord-webhook-bot",
+  "description": "Discord webhook bot",
+  "author": "Raymond Hammarling",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "eslint lib/ test/",
+    "test": "ava",
+    "watch": "ava -w",
+    "prepublish": "run-s lint test",
+    "start": "node ."
+  },
+  "engines": {
+    "node": ">=8.9.1 <9.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "eslint": "^4.14.0",
+    "eslint-config-kellyirc": "^3.1.0",
+    "npm-run-all": "^4.1.2"
+  },
+  "dependencies": {
+    "@keyv/mongo": "^1.0.4",
+    "discord.js": "^11.2.1",
+    "dotenv": "^4.0.0",
+    "got": "^8.0.1",
+    "keyv": "^3.0.0",
+    "lodash": "^4.17.4",
+    "minimist": "^1.2.0",
+    "string-argv": "0.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raymond-h/discord-webhook-bot"
+  }
 }
