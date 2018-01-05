@@ -141,3 +141,73 @@ test('ignore commands targeted at anyone else using mentions', t => {
         null
     );
 });
+
+test("allow multiline arguments when using prefix '!'", t => {
+    t.deepEqual(
+        parseCommandFromMessage('123123123123123123', {
+            content: '!hello\nworld\nbanana'
+        }),
+        {
+            command: 'hello',
+            arguments: 'world\nbanana',
+            internal: false
+        }
+    );
+
+    t.deepEqual(
+        parseCommandFromMessage('123123123123123123', {
+            content: '!hello   \n  world\nbanana'
+        }),
+        {
+            command: 'hello',
+            arguments: 'world\nbanana',
+            internal: false
+        }
+    );
+
+    t.deepEqual(
+        parseCommandFromMessage('123123123123123123', {
+            content: '!hello\nworld\nbanana\n'
+        }),
+        {
+            command: 'hello',
+            arguments: 'world\nbanana\n',
+            internal: false
+        }
+    );
+});
+
+test('allow multiline arguments when using mention prefix', t => {
+    t.deepEqual(
+        parseCommandFromMessage('123123123123123123', {
+            content: '<@123123123123123123> hello\nworld\nbanana'
+        }),
+        {
+            command: 'hello',
+            arguments: 'world\nbanana',
+            internal: false
+        }
+    );
+
+    t.deepEqual(
+        parseCommandFromMessage('123123123123123123', {
+            content: '<@123123123123123123> hello   \n  world\nbanana'
+        }),
+        {
+            command: 'hello',
+            arguments: 'world\nbanana',
+            internal: false
+        }
+    );
+
+    t.deepEqual(
+        parseCommandFromMessage('123123123123123123', {
+            content: '<@123123123123123123> hello\nworld\nbanana\n'
+        }),
+        {
+            command: 'hello',
+            arguments: 'world\nbanana\n',
+            internal: false
+        }
+    );
+});
