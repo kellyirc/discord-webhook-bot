@@ -15,7 +15,7 @@
     "node": ">=8.9.1 <9.0.0"
   },
   "devDependencies": {
-    "ava": "^0.24.0",
+    "ava": "^2.3.0",
     "eslint": "^4.14.0",
     "eslint-config-kellyirc": "^3.1.0",
     "npm-run-all": "^4.1.2"
@@ -28,7 +28,7 @@
     "got": "^8.0.1",
     "keyv": "^3.0.0",
     "keyv-file": "^0.1.7",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.15",
     "minimist": "^1.2.0",
     "string-argv": "0.0.2"
   },
