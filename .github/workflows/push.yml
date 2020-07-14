@@ -10,11 +10,11 @@ jobs:
         name: Deploy
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@master
+          - uses: actions/checkout@master
 
-            - name: Push to Dokku
-                run: ./.github/git-push.sh
-                env:
-                    SSH_KEY: ${{ secrets.SSH_KEY }}
-                    SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
-                    TARGET_GIT_URL: ${{ secrets.TARGET_GIT_URL }}
+          - name: Push to Dokku
+            run: ./.github/git-push.sh
+            env:
+                SSH_KEY: ${{ secrets.SSH_KEY }}
+                SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+                TARGET_GIT_URL: ${{ secrets.TARGET_GIT_URL }}
