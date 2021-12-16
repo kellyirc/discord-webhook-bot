@@ -8,11 +8,11 @@
     "lint": "eslint lib/ test/",
     "test": "ava",
     "watch": "ava -w",
-    "prepublish": "run-s lint test",
+    "prepublishOnly": "run-s lint test",
     "start": "node ."
   },
   "engines": {
-    "node": ">=8.9.1 <9.0.0"
+    "node": "^16.0.0"
   },
   "devDependencies": {
     "ava": "^2.3.0",
