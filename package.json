@@ -27,8 +27,8 @@
     "discord.js": "^14.15.3",
     "dotenv": "^4.0.0",
     "got": "^8.0.1",
-    "keyv": "^3.0.0",
-    "keyv-file": "^0.1.7",
+    "keyv": "^5.0.1",
+    "keyv-file": "^5.0.2",
     "lodash": "^4.17.19",
     "minimist": "^1.2.3",
     "string-argv": "0.0.2"

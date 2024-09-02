@@ -3,3 +3,4 @@ node_modules/
 *.log
 .env
 local-store.msgpack
+local-store.json
