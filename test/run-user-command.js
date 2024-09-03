@@ -1,8 +1,7 @@
 import test from 'ava';
 import Keyv from 'keyv';
 import sinon from 'sinon';
-import got from 'got';
-import { runUserCommand } from '../lib';
+import { runUserCommand } from '../lib/index.js';
 import { ChannelType } from 'discord.js';
 
 test.beforeEach(t => {
@@ -27,28 +26,23 @@ test.beforeEach(t => {
         reply: sinon.fake(),
         react: sinon.fake()
     };
-
-    t.context.gotPost = sinon.stub(got, 'post');
+    t.context.post = sinon.stub();
 });
 
-test.afterEach(t => {
-    t.context.gotPost.restore();
-});
-
-test.serial('works when returning a single message', async t => {
-    const { store, msg, gotPost } = t.context;
+test('works when returning a single message', async t => {
+    const { store, msg, post } = t.context;
 
     await store.set('commands', {
         'command-for-testing-purposes': 'https://example.com'
     });
 
-    gotPost.resolves({
+    post.resolves({
         body: {
             message: 'A cool message'
         }
     });
 
-    await runUserCommand(null, store, msg, {
+    await runUserCommand(post, null, store, msg, {
         command: 'command-for-testing-purposes',
         arguments: 'the args here',
         internal: false
@@ -56,17 +50,17 @@ test.serial('works when returning a single message', async t => {
 
     t.is(msg.channel.send.callCount, 1);
     t.snapshot(msg.channel.send.args);
-    t.snapshot(gotPost.args);
+    t.snapshot(post.args);
 });
 
-test.serial('works when returning multiple messages', async t => {
-    const { store, msg, gotPost } = t.context;
+test('works when returning multiple messages', async t => {
+    const { store, msg, post } = t.context;
 
     await store.set('commands', {
         'command-for-testing-purposes': 'https://example.com'
     });
 
-    gotPost.resolves({
+    post.resolves({
         body: [
             {
                 message: 'A cool message'
@@ -77,7 +71,7 @@ test.serial('works when returning multiple messages', async t => {
         ]
     });
 
-    await runUserCommand(null, store, msg, {
+    await runUserCommand(post, null, store, msg, {
         command: 'command-for-testing-purposes',
         arguments: 'the args here',
         internal: false
@@ -85,5 +79,5 @@ test.serial('works when returning multiple messages', async t => {
 
     t.is(msg.channel.send.callCount, 2);
     t.snapshot(msg.channel.send.args);
-    t.snapshot(gotPost.args);
+    t.snapshot(post.args);
 });

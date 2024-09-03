@@ -1,5 +1,5 @@
 import test from 'ava';
-import { parseCommandFromMessage } from '../lib/command-parser';
+import { parseCommandFromMessage } from '../lib/command-parser.js';
 
 test("allow commands with prefix '!'", t => {
     t.deepEqual(

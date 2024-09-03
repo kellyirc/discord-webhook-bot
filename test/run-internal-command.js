@@ -1,7 +1,7 @@
 import test from 'ava';
 import Keyv from 'keyv';
 import sinon from 'sinon';
-import { runInternalCommand } from '../lib';
+import { runInternalCommand } from '../lib/index.js';
 
 test.beforeEach(t => {
     t.context.storeMap = new Map();

@@ -19,7 +19,7 @@ export default [...compat.extends('kellyirc'), {
         },
 
         ecmaVersion: 2022,
-        sourceType: 'commonjs',
+        sourceType: 'module',
     },
 
     rules: {
@@ -31,9 +31,4 @@ export default [...compat.extends('kellyirc'), {
             asyncArrow: 'always',
         }],
     },
-}, {
-    files: ['test/**/*.js', '**/*.mjs'],
-    languageOptions: {
-        sourceType: 'module'
-    }
 }];
