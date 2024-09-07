@@ -21,6 +21,7 @@ test('works', async t => {
             commands: [
                 { name: 'some-command', url: '/some-command' },
                 { name: 'another-command', url: '/another-command' },
+                { name: 'different-host', url: 'https://example.se' },
             ]
         }
     });
@@ -39,8 +40,9 @@ test('works', async t => {
         [groupId]: {
             url: 'https://example.com/.commands',
             commands: [
-                { name: 'some-command', url: '/some-command' },
-                { name: 'another-command', url: '/another-command' },
+                { name: 'some-command', url: 'https://example.com/some-command' },
+                { name: 'another-command', url: 'https://example.com/another-command' },
+                { name: 'different-host', url: 'https://example.se/' },
             ]
         }
     });
