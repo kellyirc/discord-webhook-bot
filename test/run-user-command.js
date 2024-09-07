@@ -81,3 +81,40 @@ test('works when returning multiple messages', async t => {
     t.snapshot(msg.channel.send.args);
     t.snapshot(post.args);
 });
+
+test('works with command from command groups', async t => {
+    const { store, msg, post } = t.context;
+
+    await store.set('command-groups', {
+        'd556f749-3eab-4039-9e68-9434ce4722c6': {
+            url: 'https://example.com/.commands',
+            commands: [
+                { name: 'command-from-group', url: 'https://example.com/command-from-group' }
+            ]
+        },
+        '2781cc13-a833-4ed6-ab07-c9fc8cba15fd': {
+            url: 'https://example.se/.commands',
+            commands: [
+                { name: 'unused-command', url: 'https://example.se/unused-command' }
+            ]
+        },
+    });
+
+    post.resolves({
+        body: {
+            message: 'A cool message'
+        }
+    });
+
+    await runUserCommand(post, null, store, msg, {
+        command: 'command-from-group',
+        arguments: 'the args here',
+        internal: false
+    });
+
+    t.is(msg.channel.send.callCount, 1);
+    t.snapshot(msg.channel.send.args);
+    t.true(post.called);
+    t.snapshot(post.args);
+    t.is(post.args[0][0], 'https://example.com/command-from-group');
+});
